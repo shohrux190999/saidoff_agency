@@ -1,4 +1,5 @@
 from django.contrib import admin
+<<<<<<< HEAD
 from service_app.models import Order, Portfolio, ServiceDescription, Service, Tags
 from main_app.models import *
 
@@ -17,3 +18,14 @@ admin.site.register(Subscriber)
 admin.site.register(Certificates)
 admin.site.register(Feedback)
 admin.site.register(Tags)
+=======
+from .models import Service, Order, Service_description, Portfolio
+
+# Register your models here.
+
+
+admin.site.register(Service)
+admin.site.register(Order)
+admin.site.register(Service_description)
+admin.site.register(Portfolio)
+>>>>>>> d20b4f3 (Commit xabari)

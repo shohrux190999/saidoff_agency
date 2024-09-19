@@ -44,12 +44,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'main_app',
     'service_app',
     'rest_framework',
     'drf_yasg',
 
 
+=======
+    'drf_yasg',
+    'main_app',
+    'service_app',
+    'rest_framework',
+>>>>>>> d20b4f3 (Commit xabari)
 ]
 
 MIDDLEWARE = [
