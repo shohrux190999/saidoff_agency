@@ -11,12 +11,20 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+<<<<<<< HEAD
 import environ
 import os
 
 # Initialize environment variables
 env = environ.Env()
 environ.Env.read_env()  # Reads the .env file
+=======
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+>>>>>>> 246378f (Commit xabar)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,8 +34,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7-728$3o7+b&l#=c@)di#sptkpha8a4h(wtdch8fn$*ahk2i^d'
-
+SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -37,7 +44,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+<<<<<<< HEAD
     'jazzmin',
+=======
+    'modeltranslation',
+>>>>>>> 246378f (Commit xabar)
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,9 +67,19 @@ INSTALLED_APPS = [
     'main_app',
     'service_app',
     'rest_framework',
+<<<<<<< HEAD
 >>>>>>> d20b4f3 (Commit xabari)
+=======
+    'corsheaders',
+    
+>>>>>>> 246378f (Commit xabar)
 ]
-
+LANGUAGES = (
+    ('en', 'English'),
+    ('ru', 'Russian'),
+    ('uz', 'Uzbek'),
+)
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
