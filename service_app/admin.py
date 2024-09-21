@@ -1,6 +1,7 @@
 from django.contrib import admin
 from service_app.models import Order, Portfolio, ServiceDescription, Service
 from main_app.models import *
+
 # Register your models here.
 
 admin.site.register(Order)
