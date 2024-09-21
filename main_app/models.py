@@ -8,7 +8,7 @@ class WhyUs(models.Model):
         return self.title, self.description
 
 class Partners(models.Model):
-    image = models.ImageField(upload_to='/media')
+    image = models.ImageField(upload_to='/partners/', null=False, blank=False)
     def __str__(self):
         return self.image
 
@@ -16,7 +16,7 @@ class Teams(models.Model):
     name = models.CharField(max_length=50,null=False)
     profession = models.CharField(max_length=50,blank=False,null=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='/media')
+    image = models.ImageField(upload_to='/teams')
     def __str__(self):
         return self.name, self.profession, self.image
 
@@ -31,7 +31,7 @@ class Subscriber(models.Model):
 class Certificates(models.Model):
     title = models.CharField(max_length=50,null=False)
     description = models.TextField()
-    image = models.ImageField(upload_to='/media')
+    image = models.ImageField(upload_to='/certificaes/', null=False, blank=False)
     def __str__(self):
         return self
 
@@ -39,7 +39,7 @@ class Feedback(models.Model):
     comment = models.TextField()
     name = models.CharField(max_length=50,null=False)
     profession = models.CharField(max_length=50)
-    image = models.ImageField(upload_to='/media')
+    image = models.ImageField(upload_to='/feedback')
     created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self

@@ -10,7 +10,7 @@ class Service(models.Model):
 
 class ServiceDescription(models.Model):
     service_title = models.ForeignKey(Service, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='service')
+    image = models.ImageField(upload_to='service_description')
     description = models.TextField()
 
     def __str__(self):
