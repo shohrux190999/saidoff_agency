@@ -14,8 +14,6 @@ class ServiceDescription(models.Model):
     description = models.TextField()
 
 
-
-
 class Order(models.Model):
     service_name = models.ForeignKey(Service, on_delete=models.CASCADE)
     name = models.CharField(max_length=50, blank=False, null=False)
@@ -24,12 +22,10 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     is_checked = models.BooleanField(default=False)
 
-    def __str__(self):
-        return self.name
+
 
 
 class Portfolio(models.Model):
     service_name = models.ForeignKey(Service, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='portfolio')
     url_link = models.URLField(blank=False, null=False)
-

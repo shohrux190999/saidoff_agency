@@ -27,6 +27,8 @@ from main_app.views import (
     SubscriberRetrieveUpdateDestroyAPIView
 )
 
+from service_app.views import ServiceAPIView, ServiceDescriptionAPIView, OrderAPIView, PortfolioAPIView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # WhyUs
@@ -57,4 +59,22 @@ urlpatterns = [
 
     # Subscriber
     path('subscribers/<int:pk>/', SubscriberRetrieveUpdateDestroyAPIView.as_view(), name='subscriber-detail'),
+
+    # Service URLs
+    path('services/', ServiceAPIView.as_view(), name='service-list'),
+    path('services/<int:pk>/', ServiceAPIView.as_view(), name='service-detail'),
+
+    # ServiceDescription URLs
+    path('service_descriptions/', ServiceDescriptionAPIView.as_view(), name='service-description-list'),
+    path('service_descriptions/<int:pk>/', ServiceDescriptionAPIView.as_view(), name='service-description-detail'),
+
+    # Order URLs
+    path('orders/', OrderAPIView.as_view(), name='order-list'),
+    path('orders/<int:pk>/', OrderAPIView.as_view(), name='order-detail'),
+
+    # Portfolio URLs
+    path('portfolios/', PortfolioAPIView.as_view(), name='portfolio-list'),
+    path('portfolios/<int:pk>/', PortfolioAPIView.as_view(), name='portfolio-detail'),
 ]
+
+
