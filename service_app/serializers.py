@@ -1,5 +1,6 @@
+from packaging.tags import Tag
 from rest_framework import serializers
-from .models import Service, ServiceDescription, Order, Portfolio
+from .models import Service, ServiceDescription, Order, Portfolio, Tags
 
 
 class ServiceSerializer(serializers.ModelSerializer):
@@ -17,6 +18,12 @@ class ServiceDescriptionSerializer(serializers.ModelSerializer):
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
+        fields = '__all__'
+
+
+class TagsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tags
         fields = '__all__'
 
 
