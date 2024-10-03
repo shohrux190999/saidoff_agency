@@ -1,5 +1,5 @@
 from django.contrib import admin
-from service_app.models import Order, Portfolio, ServiceDescription, Service
+from service_app.models import Order, Portfolio, ServiceDescription, Service, Tags
 from main_app.models import *
 
 # Register your models here.
@@ -16,3 +16,4 @@ admin.site.register(Teams)
 admin.site.register(Subscriber)
 admin.site.register(Certificates)
 admin.site.register(Feedback)
+admin.site.register(Tags)

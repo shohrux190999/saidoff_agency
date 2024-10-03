@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'main_app',
     'service_app',
     'rest_framework',
+    'drf_yasg',
 
 
 ]

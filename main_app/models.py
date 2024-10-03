@@ -5,8 +5,6 @@ class WhyUs(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField()
 
-    def __str__(self):
-        return self.title, self.description
 
 
 class Partners(models.Model):
@@ -26,8 +24,6 @@ class Subscriber(models.Model):
     is_checked = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return self.full_name, self.phone_number
 
 
 class Certificates(models.Model):
@@ -46,8 +42,6 @@ class Feedback(models.Model):
 class FAQ_Category(models.Model):
     title = models.CharField(max_length=50, null=False)
 
-    def __str__(self):
-        return self.title
 
 
 class FAQ(models.Model):
@@ -55,5 +49,3 @@ class FAQ(models.Model):
     answer = models.TextField()
     faq_category = models.ForeignKey(FAQ_Category, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.question, self.answer

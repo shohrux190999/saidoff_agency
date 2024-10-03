@@ -15,66 +15,31 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from main_app.views import (
-    WhyusListAPIView, WhyusDestroyAPIView,
-    PartnersListAPIView, PartnersDestroyAPIView,
-    TeamsRetrieveUpdateDestroyAPIView,
-    CertificatesListCreateAPIView, CertificatesDestroyAPIView,
-    FAQCategoryListCreateAPIView, FAQCategoryRetrieveUpdateDestroyAPIView,
-    FAQRetrieveUpdateDestroyAPIView,
-    FeedbackListAPIView, FeedbackDestroyAPIView,
-    SubscriberRetrieveUpdateDestroyAPIView
-)
+from django.urls import path, include
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+from rest_framework import permissions
 
-from service_app.views import ServiceAPIView, ServiceDescriptionAPIView, OrderAPIView, PortfolioAPIView
+schema_view = get_schema_view(
+    openapi.Info(
+        title="API Documentation",
+        default_version='v1',
+        description="Test description for your API",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="contact@yourapi.com"),
+        license=openapi.License(name="BSD License"),
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # WhyUs
-    path('whyus/', WhyusListAPIView.as_view(), name='whyus-list'),
-    path('whyus/<int:pk>/delete/', WhyusDestroyAPIView.as_view(), name='whyus-delete'),
+    path('api/v1/main_app/', include('main_app.urls')),
+    path('api/v1/service_app', include('service_app.urls')),
+    # Swagger URLs
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 
-    # Partners
-    path('partners/', PartnersListAPIView.as_view(), name='partners-list'),
-    path('partners/<int:pk>/delete/', PartnersDestroyAPIView.as_view(), name='partners-delete'),
-
-    # Teams
-    path('teams/<int:pk>/', TeamsRetrieveUpdateDestroyAPIView.as_view(), name='teams-detail'),
-
-    # Certificates
-    path('certificates/', CertificatesListCreateAPIView.as_view(), name='certificates-list-create'),
-    path('certificates/<int:pk>/delete/', CertificatesDestroyAPIView.as_view(), name='certificates-delete'),
-
-    # FAQ Category
-    path('faq-categories/', FAQCategoryListCreateAPIView.as_view(), name='faqcategory-list-create'),
-    path('faq-categories/<int:pk>/', FAQCategoryRetrieveUpdateDestroyAPIView.as_view(), name='faqcategory-detail'),
-
-    # FAQ
-    path('faqs/<int:pk>/', FAQRetrieveUpdateDestroyAPIView.as_view(), name='faq-detail'),
-
-    # Feedback
-    path('feedback/', FeedbackListAPIView.as_view(), name='feedback-list'),
-    path('feedback/<int:pk>/delete/', FeedbackDestroyAPIView.as_view(), name='feedback-delete'),
-
-    # Subscriber
-    path('subscribers/<int:pk>/', SubscriberRetrieveUpdateDestroyAPIView.as_view(), name='subscriber-detail'),
-
-    # Service URLs
-    path('services/', ServiceAPIView.as_view(), name='service-list'),
-    path('services/<int:pk>/', ServiceAPIView.as_view(), name='service-detail'),
-
-    # ServiceDescription URLs
-    path('service_descriptions/', ServiceDescriptionAPIView.as_view(), name='service-description-list'),
-    path('service_descriptions/<int:pk>/', ServiceDescriptionAPIView.as_view(), name='service-description-detail'),
-
-    # Order URLs
-    path('orders/', OrderAPIView.as_view(), name='order-list'),
-    path('orders/<int:pk>/', OrderAPIView.as_view(), name='order-detail'),
-
-    # Portfolio URLs
-    path('portfolios/', PortfolioAPIView.as_view(), name='portfolio-list'),
-    path('portfolios/<int:pk>/', PortfolioAPIView.as_view(), name='portfolio-detail'),
 ]
 
 

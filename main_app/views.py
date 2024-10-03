@@ -7,30 +7,18 @@ from main_app.serializer import (
 from rest_framework import generics
 
 
-# WhyUs Views
 class WhyusListAPIView(generics.ListAPIView):
     queryset = WhyUs.objects.all()
     serializer_class = WhyusSerializer
 
 
-class WhyusDestroyAPIView(generics.DestroyAPIView):
-    queryset = WhyUs.objects.all()
-    serializer_class = WhyusSerializer
-
-
-# Partners Views
 class PartnersListAPIView(generics.ListAPIView):
     queryset = Partners.objects.all()
     serializer_class = PartnersSerializer
 
 
-class PartnersDestroyAPIView(generics.DestroyAPIView):
-    queryset = Partners.objects.all()
-    serializer_class = PartnersSerializer
 
-
-# Teams Views
-class TeamsRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+class TeamsListAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Teams.objects.all()
     serializer_class = TeamsSerializer
 
@@ -41,40 +29,23 @@ class CertificatesListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = CertificatesSerializer
 
 
-class CertificatesDestroyAPIView(generics.DestroyAPIView):
-    queryset = Certificates.objects.all()
-    serializer_class = CertificatesSerializer
-
-
-# FAQ Category Views
 class FAQCategoryListCreateAPIView(generics.ListCreateAPIView):
     queryset = FAQ_Category.objects.all()
     serializer_class = FAQCategorySerializer
 
 
-class FAQCategoryRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = FAQ_Category.objects.all()
-    serializer_class = FAQCategorySerializer
-
-
-# FAQ Views
-class FAQRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+class FAQListAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = FAQ.objects.all()
     serializer_class = FAQSerializer
 
 
-# Feedback Views
+
 class FeedbackListAPIView(generics.ListAPIView):
     queryset = Feedback.objects.all()
     serializer_class = FeedbackSerializer
 
 
-class FeedbackDestroyAPIView(generics.DestroyAPIView):
-    queryset = Feedback.objects.all()
-    serializer_class = FeedbackSerializer
 
-
-# Subscriber Views
-class SubscriberRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+class SubscriberListAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Subscriber.objects.all()
     serializer_class = SubscriberSerializer
